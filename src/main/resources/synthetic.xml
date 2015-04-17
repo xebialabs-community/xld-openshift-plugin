@@ -1,0 +1,27 @@
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+    Note: If you modify this file, you must restart the XL Deploy server.
+-->
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<type type="rh.OpenShiftClient" extends="udm.BaseContainer">
+<property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true"/>
+<property name="username" />
+<property name="password" password="true" />
+</type>
+
+<type type="rh.TomcatWARModule" extends="udm.BaseDeployedArtifact" deployable-type="rh.TomcatWAR"
+            container-type="rh.OpenShiftClient" description="Tomcat WAR for Openshift gear">
+                        <generate-deployable type="rh.TomcatWAR" extends="udm.BaseDeployableFileArtifact"/>
+                            <property name="appName" required="true"/>
+                            </type>
+
+</synthetic>

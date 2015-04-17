@@ -1,0 +1,28 @@
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+
+<?xml version="1.0"?>
+<!--
+    Note: If you modify this file and automatic reloading is disabled in `planner.conf`, you must restart the XL Deploy server.
+-->
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+    <!-- Add your <rule ...> and <disable-rule ...> elements here -->
+<rule name="rh.TomcatWARModuleCREATE_MODIFY" scope="deployed">
+<conditions>
+<type>rh.TomcatWARModule</type>
+<operation>CREATE</operation>
+<operation>MODIFY</operation>
+</conditions>
+<steps>
+<os-script>
+<script>scripts/deploy-artifact</script>
+</os-script>
+</steps>
+</rule>
+
+</rules>
