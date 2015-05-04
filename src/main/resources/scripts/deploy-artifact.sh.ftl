@@ -8,10 +8,9 @@
 
 echo "Wrapping ${deployed.file.name} to tar.gz"
 mkdir -p dependencies/jbossews/webapps/
-cp ${deployed.file.name} dependencies/jbossews/webapps/
-tar -cvf ${deployed.name}.tar dependencies
-gzip ${deployed.name}.tar
+cp ${deployed.file.path} dependencies/jbossews/webapps/
+tar -cvf ${deployed.file.name}.tar dependencies
+gzip ${deployed.file.name}.tar
 rhc app-configure ${deployed.appName} --no-auto-deploy -l ${deployed.container.username} -p ${deployed.container.password}
 rhc app-configure ${deployed.appName} --deployment-type binary -l ${deployed.container.username} -p ${deployed.container.password}
-rhc app deploy --app ${deployed.appName} --ref ${deployed.name}.tar.gz -l ${deployed.container.username} -p ${deployed.container.password} 
-
+rhc app deploy --app ${deployed.appName} --ref ${deployed.file.name}.tar.gz -l ${deployed.container.username} -p ${deployed.container.password}
