@@ -9,17 +9,8 @@
        xmlns="http://www.xebialabs.com/xl-deploy/xl-rules" >
 
 
-<rule name="rh.TomcatWARModuleCREATE_MODIFY" scope="deployed">
-<conditions>
-<type>rh.TomcatWARModule</type>
-<operation>CREATE</operation>
-<operation>MODIFY</operation>
-</conditions>
-<steps>
-<os-script>
-<script>scripts/deploy-artifact</script>
-</os-script>
-</steps>
+<rule name="rh.TomcatWARModuleCREATE_MODIFY" scope="plan">
+    <planning-script-path>scripts/plan.py</planning-script-path>
 </rule>
 
 </rules>

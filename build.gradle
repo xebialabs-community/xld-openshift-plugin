@@ -7,7 +7,7 @@ buildscript {
   }
 }
 
-version=5.0
+version=5.0_1
 
 apply plugin: "com.github.hierynomus.license"
 apply plugin: 'java'
