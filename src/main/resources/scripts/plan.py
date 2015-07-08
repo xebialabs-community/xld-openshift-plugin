@@ -31,10 +31,8 @@ for app in deployedMap.entrySet():
     fc = {'appName':appsplit[0]}
     for d in app.value:
 	containerObj = d.container
-        fc["deployed" + str(fc.__len__())] =  d
-    fc["count"] = fc.__len__() - 1
+	break
     fc["container"] = containerObj
-    print fc
     context.addStep(steps.os_script(
        description="Deploying Application %s on %s" % (appsplit[0],containerObj.id) ,
        script="scripts/deploy-artifact",
