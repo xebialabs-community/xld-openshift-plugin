@@ -4,6 +4,7 @@
 # FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 #
 
+
 from java.util import HashMap
 from java.util import HashSet
 
@@ -26,13 +27,17 @@ def sortDeployeds():
 deployedMap = sortDeployeds()
 for app in deployedMap.entrySet():
     appsplit = app.key.rpartition("___")
-    deployed1 = ""
+    containerObj = ""
+    fc = {'appName':appsplit[0]}
     for d in app.value:
-        deployed1 = d
-	break;
+	containerObj = d.container
+        fc["deployed" + str(fc.__len__())] =  d
+    fc["count"] = fc.__len__() - 1
+    fc["container"] = containerObj
+    print fc
     context.addStep(steps.os_script(
-       description="Deploying Application %s on %s" % (appsplit[0],deployed1.container.id) ,
+       description="Deploying Application %s on %s" % (appsplit[0],containerObj.id) ,
        script="scripts/deploy-artifact",
-       freemarker_context={'deployeds':app.value,'appName':appsplit[0],'deployed1':deployed1},
+       freemarker_context=fc,
        order=80,
-       target_host = deployed1.container.host))
+       target_host = containerObj.host))

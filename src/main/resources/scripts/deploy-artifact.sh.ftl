@@ -6,17 +6,16 @@
 
 -->
 
-
 mkdir -p dependencies/jbossews/webapps/
 echo "Wrapping artifacts for deployment"
-<#list deployeds as d>
-echo "Copying ${d.file.path} to dependencies/jbossews/webapps/"
-cp ${d.file.path} dependencies/jbossews/webapps/
+<#list 1..count as d>
+<#assign tempvar="deployed${d}.file.path" />
+echo "Copying ${tempvar?eval} to dependencies/jbossews/webapps/"
+cp ${tempvar?eval} dependencies/jbossews/webapps/
 </#list>
 tar -cvf ${appName}.tar dependencies
 tar -tvf ${appName}.tar
 gzip ${appName}.tar
-rhc app-configure ${appName} --no-auto-deploy -l ${deployed1.container.username} -p ${deployed1.container.password}
-rhc app-configure ${appName} --deployment-type binary -l ${deployed1.container.username} -p ${deployed1.container.password}
-rhc app deploy --app ${appName} --ref ${appName}.tar.gz -l ${deployed1.container.username} -p ${deployed1.container.password}
-
+rhc app-configure ${appName} --no-auto-deploy -l ${container.username} -p ${container.password}
+rhc app-configure ${appName} --deployment-type binary -l ${container.username} -p ${container.password}
+rhc app deploy --app ${appName} --ref ${appName}.tar.gz -l ${container.username} -p ${container.password}
