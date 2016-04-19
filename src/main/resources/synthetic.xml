@@ -6,19 +6,54 @@
 
 -->
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://www.xebialabs.com/deployit/synthetic" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-<type type="rh.OpenShiftClient" extends="udm.BaseContainer">
-	<property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true"/>
-	<property name="username" />
-	<property name="password" password="true" />
-</type>
+    <!-- OpenShift v3 -->
+    <!-- v3 container -->
+    <type type="openshift.Server" extends="udm.BaseContainer">
+        <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true" description="The host where the oc client is installed on."/>
+        <property name="serverUrl" required="true"/>
+        <property name="username" required="false"/>
+        <property name="password" required="false" password="true"/>
 
+    </type>
 
-<type type="rh.TomcatWARModule" extends="udm.BaseDeployedArtifact" deployable-type="rh.TomcatWAR"
-            container-type="rh.OpenShiftClient" description="Tomcat WAR for Openshift gear">
-    <generate-deployable type="rh.TomcatWAR" extends="udm.BaseDeployableFileArtifact"/>
-    <property name="appName" required="true"/>
-</type>
+    <!-- v3 deployables -->
+    <!-- v3 project - should already exist. -->
+    <type type="openshift.ProjectModule" extends="udm.BaseDeployed" deployable-type="openshift.Project"
+          container-type="openshift.Server" description="OpenShift Project">
+        <generate-deployable type="openshift.Project" extends="udm.BaseDeployable"/>
+        <property name="projectName" required="true"/>
+        <property name="description" required="false"/>
+        <property name="projectDisplayName" required="false"/>
+    </type>
+
+    <!-- v3 app -->
+    <type type="openshift.AppModule" extends="udm.BaseDeployed" deployable-type="openshift.App"
+          container-type="openshift.Server" description="OpenShift App">
+        <generate-deployable type="openshift.App" extends="udm.BaseDeployable"/>
+        <property name="appName" required="true"/>
+        <property name="project" required="true"/>
+        <property name="dockerUrl" required="false" category="Docker"/>
+        <property name="dockerOrganization" required="false" category="Docker"/>
+        <property name="dockerName" required="false" category="Docker"/>
+        <property name="dockerTag" required="false" category="Docker"/>
+    </type>
+
+    <!-- OpenShift v2 -->
+    <!-- v2 container -->
+    <type type="rh.OpenShiftClient" extends="udm.BaseContainer">
+        <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true"/>
+        <property name="username"/>
+        <property name="password" password="true"/>
+    </type>
+
+    <!-- v2 deployables -->
+    <type type="rh.TomcatWARModule" extends="udm.BaseDeployedArtifact" deployable-type="rh.TomcatWAR"
+          container-type="rh.OpenShiftClient" description="Tomcat WAR for OpenShift gear">
+        <generate-deployable type="rh.TomcatWAR" extends="udm.BaseDeployableFileArtifact"/>
+        <property name="appName" required="true"/>
+    </type>
 
 </synthetic>

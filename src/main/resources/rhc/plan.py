@@ -8,34 +8,34 @@
 from java.util import HashMap
 from java.util import HashSet
 
-def sortDeployeds():
-    deployedMap = HashMap()
+def sort_deployeds():
+    deployeds_per_key = HashMap()
     for _delta in deltas.deltas:
         deployed = _delta.deployedOrPrevious
         if deployed.type == "rh.TomcatWARModule":
-	    key = deployed.appName + "___" + deployed.container.name
-	    if deployedMap.containsKey(key):
-		deployedMap.get(key).add(deployed)
-	    else:
-		result = HashSet()
-		result.add(deployed)
-		deployedMap.put(key, result)
-    return deployedMap
+            key = "%s___%s" % (deployed.appName, deployed.container.name)
+            if deployeds_per_key.containsKey(key):
+                deployeds_per_key.get(key).add(deployed)
+            else:
+                result = HashSet()
+                result.add(deployed)
+                deployeds_per_key.put(key, result)
+    return deployeds_per_key
 
 
 
-deployedMap = sortDeployeds()
-for app in deployedMap.entrySet():
+deployed_map = sort_deployeds()
+for app in deployed_map.entrySet():
     appsplit = app.key.rpartition("___")
     containerObj = ""
     fc = {'appName':appsplit[0]}
     for d in app.value:
-	containerObj = d.container
-	break
+        containerObj = d.container
+        break
     fc["container"] = containerObj
     context.addStep(steps.os_script(
        description="Deploying Application %s on %s" % (appsplit[0],containerObj.id) ,
-       script="scripts/deploy-artifact",
+       script="rhc/deploy-artifact",
        freemarker_context=fc,
        order=80,
        target_host = containerObj.host))

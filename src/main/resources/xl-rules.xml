@@ -8,21 +8,75 @@
 
 <rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
 
-<rule name="rh.TomcatWARModuleCREATE_MODIFY_plan" scope="plan">
-    <planning-script-path>scripts/plan.py</planning-script-path>
-</rule>
+    <rule name="openshift.ProjectModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>openshift.ProjectModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/deploy-project-module</script>
+                <order>60</order>
+            </os-script>
+        </steps>
+    </rule>
 
-<rule name="rh.TomcatWARModuleCREATE_MODIFY" scope="deployed">
-<conditions>
-<type>rh.TomcatWARModule</type>
-<operation>CREATE</operation>
-<operation>MODIFY</operation>
-</conditions>
-<steps>
-<os-script>
-<script>scripts/stage-artifact</script>
-</os-script>
-</steps>
-</rule>
+    <rule name="openshift.ProjectModule.DESTROY" scope="deployed">
+        <conditions>
+            <type>openshift.ProjectModule</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/undeploy-project-module</script>
+                <order>61</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="openshift.AppModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>openshift.AppModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/deploy-app-module</script>
+                <order>61</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="openshift.AppModule.DESTROY" scope="deployed">
+        <conditions>
+            <type>openshift.AppModule</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/undeploy-app-module</script>
+                <order>60</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="rh.TomcatWARModule.CREATE_MODIFY_plan" scope="plan">
+        <planning-script-path>rhc/plan.py</planning-script-path>
+    </rule>
+
+    <rule name="rh.TomcatWARModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>rh.TomcatWARModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>rhc/stage-artifact</script>
+            </os-script>
+        </steps>
+    </rule>
 
 </rules>
