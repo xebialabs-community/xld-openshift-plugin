@@ -14,6 +14,7 @@
     <type type="openshift.Server" extends="udm.BaseContainer">
         <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true" description="The host where the oc client is installed on."/>
         <property name="serverUrl" required="true"/>
+        <property name="ocHome" required="true"/>
         <property name="username" required="false"/>
         <property name="password" required="false" password="true"/>
 

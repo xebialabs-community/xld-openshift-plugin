@@ -18,12 +18,12 @@
 </#if>
 
 # login to openshift
-oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p ${deployed.container.password} --insecure-skip-tls-verify=true
+${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p ${deployed.container.password} --insecure-skip-tls-verify=true
 
-PROJECT_CONFIG=`oc get projects | grep "${deployed.projectName}" | tail -1 | awk '{print $1}'`
+PROJECT_CONFIG=`${deployed.container.ocHome}/oc get projects | grep "${deployed.projectName}" | tail -1 | awk '{print $1}'`
 if [ "$PROJECT_CONFIG" == "${deployed.projectName}" ];
 then
     echo "Project already exists"
 else
-    oc new-project ${deployed.projectName} --description="${description}" --display-name="${displayName}"
+    ${deployed.container.ocHome}/oc new-project ${deployed.projectName} --description="${description}" --display-name="${displayName}"
 fi;
