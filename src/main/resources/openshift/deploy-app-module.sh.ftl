@@ -8,7 +8,7 @@
 
 
 # login to openshift and switch projects
-${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p ${deployed.container.password} --insecure-skip-tls-verify=true
+${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p '${deployed.container.password}' --insecure-skip-tls-verify=true
 ${deployed.container.ocHome}/oc project ${deployed.project}
 
 # determine if this app already exists, if not deploy a new one

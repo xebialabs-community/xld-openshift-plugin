@@ -6,6 +6,6 @@
 
 -->
 # login to openshift and switch projects
-${deployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u ${previousDeployed.container.username} -p ${previousDeployed.container.password} --insecure-skip-tls-verify=true
+${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u ${previousDeployed.container.username} -p '${previousDeployed.container.password}' --insecure-skip-tls-verify=true
 
-${deployed.container.ocHome}/oc delete project ${previousDeployed.projectName}
+${previousDeployed.container.ocHome}/oc delete project ${previousDeployed.projectName}
