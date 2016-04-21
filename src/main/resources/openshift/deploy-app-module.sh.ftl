@@ -18,6 +18,6 @@ if [ "$BUILD_CONFIG" == "${deployed.appName}" ]; then
     ${deployed.container.ocHome}/oc import-image ${deployed.appName}
 else
     # create new app automatically
-    ${deployed.container.ocHome}/oc new-app <#if deployed.dockerUrl?has_content>${deployed.dockerUrl}/</#if><#if deployed.dockerOrganization?has_content>${deployed.dockerOrganization}/</#if>$deployed.dockerName<#if deployed.dockerTag?has_content>:${deployed.dockerTag}</#if> --name=${deployed.appName}
+    ${deployed.container.ocHome}/oc new-app <#if deployed.dockerUrl?has_content>${deployed.dockerUrl}/</#if><#if deployed.dockerOrganization?has_content>${deployed.dockerOrganization}/</#if>${deployed.dockerName}<#if deployed.dockerTag?has_content>:${deployed.dockerTag}</#if> --name=${deployed.appName}
     ${deployed.container.ocHome}/oc expose service ${deployed.appName}
 fi;
