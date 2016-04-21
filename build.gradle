@@ -4,7 +4,7 @@ plugins {
 }
 
 
-version="6.0.0.RC5"
+version="6.0.0.RC6"
 
 apply plugin: 'java'
 apply plugin: 'idea'

@@ -12,7 +12,7 @@ ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -
 ${deployed.container.ocHome}/oc project ${deployed.project}
 
 # determine if this app already exists, if not deploy a new one
-BUILD_CONFIG=`${deployed.container.ocHome}/oc get dc | grep "${deployed.appName} | tail -1 | awk '{print $1}'`
+BUILD_CONFIG=`${deployed.container.ocHome}/oc get dc | grep "${deployed.appName}" | tail -1 | awk '{print $1}'`
 if [ "$BUILD_CONFIG" == "${deployed.appName}" ]; then
     # import new docker image into project (kicks off deployment)
     ${deployed.container.ocHome}/oc import-image ${deployed.appName}
