@@ -9,4 +9,4 @@
 ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u ${previousDeployed.container.username} -p '${previousDeployed.container.password}' --insecure-skip-tls-verify=true
 ${previousDeployed.container.ocHome}/oc project ${previousDeployed.project}
 
-${previousDeployed.container.ocHome}/oc delete all -l ${previousDeployed.appName}
+${previousDeployed.container.ocHome}/oc delete all -l app=${previousDeployed.appName}

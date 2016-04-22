@@ -57,7 +57,7 @@
         <steps>
             <os-script>
                 <script>openshift/undeploy-app-module</script>
-                <order>60</order>
+                <order>60</order>1
             </os-script>
         </steps>
     </rule>
