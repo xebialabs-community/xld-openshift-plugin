@@ -20,7 +20,7 @@
 # login to openshift
 ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p '${deployed.container.password}' --insecure-skip-tls-verify=true
 
-PROJECT_CONFIG=`${deployed.container.ocHome}/oc get projects | grep "${deployed.projectName}" | tail -1 | awk '{print $1}'`
+PROJECT_CONFIG=`${deployed.container.ocHome}/oc get projects ${deployed.projectName} | tail -1 | awk '{print $1}'`
 if [ "$PROJECT_CONFIG" == "${deployed.projectName}" ];
 then
     echo "Project already exists"
