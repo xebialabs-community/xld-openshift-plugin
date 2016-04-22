@@ -53,11 +53,12 @@
         <conditions>
             <type>openshift.AppModule</type>
             <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
         </conditions>
         <steps>
             <os-script>
                 <script>openshift/undeploy-app-module</script>
-                <order>60</order>1
+                <order>60</order>
             </os-script>
         </steps>
     </rule>
