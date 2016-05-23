@@ -20,8 +20,9 @@ Starting from version 6.0.0, OpenShift v3 is also part of this plugin.
 # Requirements #
 
 * **Requirements**
-	* **XL Deploy** 4.5.0+
+	* **XL Deploy** 5.0.0+
 	* **rhc client on target machine for OpenShift v2** 
+	* **oc client on target machine for OpenShift v3** 
 
 # Installation #
 

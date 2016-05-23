@@ -15,9 +15,19 @@
         <property name="host" kind="ci" referenced-type="overthere.Host" as-containment="true" description="The host where the oc client is installed on."/>
         <property name="serverUrl" required="true"/>
         <property name="ocHome" required="true"/>
-        <property name="username" required="false"/>
-        <property name="password" required="false" password="true"/>
 
+        <property name="authentication" kind="enum" required="true" description="Define which authentication should be used" category="security">
+            <enum-values>
+                <value>Basic</value>
+                <value>Token</value>
+                <value>Basic Alias</value>
+                <value>Token Alias</value>
+            </enum-values>
+        </property>
+        <property name="username" required="false" category="security"/>
+        <property name="password" required="false" password="true" category="security"/>
+        <property name="openshiftToken" required="false" password="true" category="security"/>
+        <property name="credential" kind="ci" required="false" referenced-type="openshift.Credential" category="security"/>
     </type>
 
     <!-- v3 deployables -->
