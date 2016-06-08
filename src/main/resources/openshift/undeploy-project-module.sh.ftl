@@ -6,17 +6,17 @@
 
 -->
 # login to openshift and switch projects
-<#if deployed.container.authentication == "Basic">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p '${deployed.container.password}' --insecure-skip-tls-verify=true
+<#if previousDeployed.container.authentication == "Basic">
+    ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u ${previousDeployed.container.username} -p '${previousDeployed.container.password}' --insecure-skip-tls-verify=true
 </#if>
-<#if deployed.container.authentication == "Token">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.openshiftToken} --insecure-skip-tls-verify=true
+<#if previousDeployed.container.authentication == "Token">
+    ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} --token=${previousDeployed.container.openshiftToken} --insecure-skip-tls-verify=true
 </#if>
-<#if deployed.container.authentication == "Basic Alias">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.credential.username} -p '${deployed.container.credential.password}' --insecure-skip-tls-verify=true
+<#if previousDeployed.container.authentication == "Basic Alias">
+    ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u ${previousDeployed.container.credential.username} -p '${previousDeployed.container.credential.password}' --insecure-skip-tls-verify=true
 </#if>
-<#if deployed.container.authentication == "Token Alias">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.credential.openshiftToken} --insecure-skip-tls-verify=true
+<#if previousDeployed.container.authentication == "Token Alias">
+    ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} --token=${previousDeployed.container.credential.openshiftToken} --insecure-skip-tls-verify=true
 </#if>
 
 ${previousDeployed.container.ocHome}/oc delete project ${previousDeployed.projectName}
