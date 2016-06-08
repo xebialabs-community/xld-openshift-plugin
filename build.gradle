@@ -1,10 +1,11 @@
+import org.apache.tools.ant.filters.ReplaceTokens
 plugins {
     id "com.github.hierynomus.license" version "0.12.1"
     id "com.xebialabs.xldp" version "1.0.5"
 }
 
 
-version="6.0.2"
+version="6.0.3"
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -27,6 +28,13 @@ repositories {
 
 dependencies {
     compile "com.xebialabs.deployit:udm-plugin-api:$apiVersion"
+}
+
+processResources.configure {
+    filter ReplaceTokens, tokens: [
+            'project.version': version.toString(),
+            'project.name': rootProject.name
+    ]
 }
 
 license {
