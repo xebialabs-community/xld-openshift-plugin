@@ -6,7 +6,7 @@
 
 -->
 
-
+set -e
 # login to openshift and switch projects
 <#if deployed.container.authentication == "Basic">
     ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p '${deployed.container.password}' --insecure-skip-tls-verify=true

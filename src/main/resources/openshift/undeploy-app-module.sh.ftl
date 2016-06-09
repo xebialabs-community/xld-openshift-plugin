@@ -5,6 +5,7 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
+set -e
 # login to openshift and switch projects
 <#if previousDeployed.container.authentication == "Basic">
     ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u ${previousDeployed.container.username} -p '${previousDeployed.container.password}' --insecure-skip-tls-verify=true

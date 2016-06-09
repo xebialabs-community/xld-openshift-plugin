@@ -6,10 +6,10 @@ See the **XL Deploy Reference Manual** for background information on XL Deploy a
 
 # CI status #
 
-[![Build Status][xld-advanced-command-travis-image]][xld-advanced-command-travis-url]
+[![Build Status][xld-openshift-travis-image]][xld-openshift-travis-url]
 
-[xld-advanced-command-travis-image]: https://travis-ci.org/xebialabs-community/xld-openshift-plugin.svg?branch=master
-[xld-advanced-command-travis-url]: https://travis-ci.org/xebialabs-community/xld-openshift-plugin
+[xld-openshift-travis-image]: https://travis-ci.org/xebialabs-community/xld-openshift-plugin.svg?branch=master
+[xld-openshift-travis-url]: https://travis-ci.org/xebialabs-community/xld-openshift-plugin
 
 
 # Overview #
