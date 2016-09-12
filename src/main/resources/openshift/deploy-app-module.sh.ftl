@@ -9,13 +9,13 @@
 set -e
 # login to openshift and switch projects
 <#if deployed.container.authentication == "Basic">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p '${deployed.container.password}' --insecure-skip-tls-verify=true
+    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p "${deployed.container.password}" --insecure-skip-tls-verify=true
 </#if>
 <#if deployed.container.authentication == "Token">
     ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.openshiftToken} --insecure-skip-tls-verify=true
 </#if>
 <#if deployed.container.authentication == "Basic Alias">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.credential.username} -p '${deployed.container.credential.password}' --insecure-skip-tls-verify=true
+    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.credential.username} -p "${deployed.container.credential.password}" --insecure-skip-tls-verify=true
 </#if>
 <#if deployed.container.authentication == "Token Alias">
     ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.credential.openshiftToken} --insecure-skip-tls-verify=true
