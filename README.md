@@ -6,9 +6,9 @@ See the **XL Deploy Reference Manual** for background information on XL Deploy a
 
 # CI status #
 
-[![Build Status][xld-openshift-travis-image]][xld-openshift-plugin-travis-url]
-[![Codacy Badge][xld-openshift-codacy-image] ][xld-openshift-plugin-codacy-url]
-[![Code Climate][xld-openshift-code-climate-image] ][xld-openshift-plugin-code-climate-url]
+[![Build Status][xld-openshift-plugin-travis-image]][xld-openshift-plugin-travis-url]
+[![Codacy Badge][xld-openshift-plugin-codacy-image] ][xld-openshift-plugin-codacy-url]
+[![Code Climate][xld-openshift-plugin-code-climate-image] ][xld-openshift-plugin-code-climate-url]
 
 [xld-openshift-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xld-openshift-plugin.svg?branch=master
 [xld-openshift-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xld-openshift-plugin
