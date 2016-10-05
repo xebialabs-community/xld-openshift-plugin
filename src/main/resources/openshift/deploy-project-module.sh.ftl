@@ -18,19 +18,7 @@ set -e
     <#assign displayName=deployed.projectName />
 </#if>
 
-# login to openshift
-<#if deployed.container.authentication == "Basic">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.username} -p "${deployed.container.password}" --insecure-skip-tls-verify=true
-</#if>
-<#if deployed.container.authentication == "Token">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.openshiftToken} --insecure-skip-tls-verify=true
-</#if>
-<#if deployed.container.authentication == "Basic Alias">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u ${deployed.container.credential.username} -p "${deployed.container.credential.password}" --insecure-skip-tls-verify=true
-</#if>
-<#if deployed.container.authentication == "Token Alias">
-    ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.credential.openshiftToken} --insecure-skip-tls-verify=true
-</#if>
+<#include "/openshift/oc-login-deployed.ftl">
 
 PROJECT_CONFIG=`${deployed.container.ocHome}/oc get projects ${deployed.projectName} | tail -1 | awk '{print $1}'`
 if [ "$PROJECT_CONFIG" == "${deployed.projectName}" ];

@@ -37,3 +37,8 @@ Place the plugin xldp file into your `SERVER_HOME/plugins` directory.
 
 # Usage #
 
+* OpenShift v3
+    * `openshift.Project`
+    * `openshift.App`
+    * `openshift.BinaryApp`
+* OpenShift v2

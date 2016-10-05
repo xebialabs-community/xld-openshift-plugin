@@ -63,6 +63,34 @@
         </steps>
     </rule>
 
+    <rule name="openshift.BinaryAppModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>openshift.BinaryAppModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/deploy-binary-app-module</script>
+                <order>61</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="openshift.BinaryAppModule.DESTROY" scope="deployed">
+        <conditions>
+            <type>openshift.BinaryAppModule</type>
+            <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/undeploy-app-module</script>
+                <order>60</order>
+            </os-script>
+        </steps>
+    </rule>
+
     <rule name="rh.TomcatWARModule.CREATE_MODIFY_plan" scope="plan">
         <planning-script-path>rhc/plan.py</planning-script-path>
     </rule>
