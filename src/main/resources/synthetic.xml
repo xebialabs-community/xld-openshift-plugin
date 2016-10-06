@@ -46,10 +46,10 @@
         <generate-deployable type="openshift.App" extends="udm.BaseDeployable"/>
         <property name="appName" required="true"/>
         <property name="project" required="true"/>
-        <property name="dockerUrl" required="false" category="Docker"/>
-        <property name="dockerOrganization" required="false" category="Docker"/>
-        <property name="dockerName" required="false" category="Docker"/>
-        <property name="dockerTag" required="false" category="Docker"/>
+        <property name="dockerUrl" required="false" label="Docker Url" category="Docker" description="Docker base url to be used."/>
+        <property name="dockerOrganization" required="false" label="Docker Organization" category="Docker" description="Docker organization name."/>
+        <property name="dockerName" required="false" label="Docker Image Name" category="Docker" description="Docker image name."/>
+        <property name="dockerTag" required="false" label="Docker Image Tag" category="Docker" description="Docker image tag."/>
     </type>
 
     <type type="openshift.BinaryAppModule" extends="udm.BaseDeployedArtifact" deployable-type="openshift.BinaryApp"

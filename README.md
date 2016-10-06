@@ -40,5 +40,11 @@ Place the plugin xldp file into your `SERVER_HOME/plugins` directory.
 * OpenShift v3
     * `openshift.Project`
     * `openshift.App`
+        * `appName`: OpenShift application name
+        * `project`: OpenShift project name.
+        * `dockerUrl`: Docker base url to be used.
+        * `dockerOrganization`: Docker organization name.
+        * `dockerName`: Docker image name.
+        * `dockerTag`: Docker image tag.
     * `openshift.BinaryApp`
 * OpenShift v2
