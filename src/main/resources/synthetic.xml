@@ -28,6 +28,18 @@
         <property name="password" required="false" password="true" category="security"/>
         <property name="openshiftToken" required="false" password="true" category="security"/>
         <property name="credential" kind="ci" required="false" referenced-type="openshift.Credential" category="security"/>
+        <method   name="check"
+                  delegate="shellScript"
+                  host="${thisCi.host}"
+                  script="openshift/checkOC" />
+        <method   name="showResource"
+                  delegate="shellScript"
+                  host="${thisCi.host}"
+                  script="openshift/showResourceStatus" >
+            <parameters>
+                <parameter name="projectName"/>
+            </parameters>
+        </method>
     </type>
 
     <!-- v3 deployables -->
@@ -58,6 +70,12 @@
         <property name="appName" required="true"/>
         <property name="project" required="true"/>
         <property name="imageStream" required="true" label="Image Stream" description="Name of an image stream to to use as a builder."/>
+    </type>
+
+    <type type="openshift.ResourceModule" extends="udm.BaseDeployedArtifact" deployable-type="openshift.Resource"
+          container-type="openshift.Server" description="OpenShift Resource">
+        <generate-deployable type="openshift.Resource" extends="udm.BaseDeployableArtifact"/>
+        <property name="project"     required="true"  description="Project Name"/>
     </type>
 
     <!-- OpenShift v2 -->

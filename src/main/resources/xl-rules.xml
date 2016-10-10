@@ -91,6 +91,20 @@
         </steps>
     </rule>
 
+    <rule name="openshift.ResourceModule.CREATE" scope="deployed">
+        <conditions>
+            <type>openshift.ResourceModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/deploy-resource-module</script>
+                <order>70</order>
+            </os-script>
+        </steps>
+    </rule>
+
     <rule name="rh.TomcatWARModule.CREATE_MODIFY_plan" scope="plan">
         <planning-script-path>rhc/plan.py</planning-script-path>
     </rule>
