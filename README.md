@@ -21,8 +21,7 @@ See the **XL Deploy Reference Manual** for background information on XL Deploy a
 
 # Overview #
 
-This XLD OpenShift plugin is capable of doing WAR deployment to OpenShift JBoss gear. It uses rhc client to push to OpenShift environments.
-Starting from version 6.0.0, OpenShift v3 is also part of this plugin.
+This XLD OpenShift plugin supports v2 & v3 OpenShift implementations.  This plugin allows you to manage the deployment of OpenShift projects, containers and resources to your OpenShift infrastructure.  Additionaly this plugin still supports doing WAR deployment to OpenShift JBoss gear. It uses rhc client to push to OpenShift environments.
 
 # Requirements #
 
