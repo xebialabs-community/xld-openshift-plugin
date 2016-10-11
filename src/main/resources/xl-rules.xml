@@ -105,6 +105,19 @@
         </steps>
     </rule>
 
+    <rule name="openshift.ResourceModule.DESTROY" scope="deployed">
+        <conditions>
+            <type>openshift.ResourceModule</type>
+            <operation>DESTROY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/undeploy-resource-module</script>
+                <order>40</order>
+            </os-script>
+        </steps>
+    </rule>
+
     <rule name="rh.TomcatWARModule.CREATE_MODIFY_plan" scope="plan">
         <planning-script-path>rhc/plan.py</planning-script-path>
     </rule>
