@@ -73,6 +73,10 @@ utility on a server.
 	      * credential `openshift.Credential`
 	         * Token
 	   
+	   The `openshift.Server` has two control tasks that can be use to verft the configuration as follows:
+	   * ***check:*** This control task will log into the OpenShift server using the **oc** command line tool to verify connectivity to the OpenShift server.
+	   * **showResource:** This control task can be use to check on the available resources for a project.  You will be expect to provide a project name to execute this control task.
+	   
 * OpenShift Deployables
 	   
     * **openshift.Project:**
