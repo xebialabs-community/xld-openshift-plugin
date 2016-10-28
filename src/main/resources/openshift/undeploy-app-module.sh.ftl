@@ -11,3 +11,4 @@ set -e
 ${previousDeployed.container.ocHome}/oc project ${previousDeployed.project}
 
 ${previousDeployed.container.ocHome}/oc delete all -l app=${previousDeployed.appName}
+${previousDeployed.container.ocHome}/oc logout

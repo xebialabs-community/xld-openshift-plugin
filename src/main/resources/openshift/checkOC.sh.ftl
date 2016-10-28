@@ -10,4 +10,5 @@ set -e
 <#include "/openshift/oc-login-container.ftl">
 
 ${container.ocHome}/oc status
+${container.ocHome}/oc logout
 

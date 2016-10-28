@@ -10,5 +10,6 @@ set -e
 <#include "/openshift/oc-login-container.ftl">
 
 ${container.ocHome}/oc describe quota -n ${params.projectName}
+${container.ocHome}/oc logout
 
 

@@ -9,3 +9,4 @@ set -e
 <#include "/openshift/oc-login-previousDeployed.ftl">
 
 ${previousDeployed.container.ocHome}/oc delete project ${previousDeployed.projectName}
+${previousDeployed.container.ocHome}/oc logout

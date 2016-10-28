@@ -27,3 +27,5 @@ then
 else
     ${deployed.container.ocHome}/oc new-project ${deployed.projectName} --description="${description}" --display-name="${displayName}"
 fi;
+
+${deployed.container.ocHome}/oc logout

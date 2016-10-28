@@ -14,3 +14,4 @@ echo "destroy resource"
 ${previousDeployed.container.ocHome}/oc project ${previousDeployed.project}
 ${previousDeployed.container.ocHome}/oc delete -f ${previousDeployed.file.path}
 ${previousDeployed.container.ocHome}/oc status
+${previousDeployed.container.ocHome}/oc logout

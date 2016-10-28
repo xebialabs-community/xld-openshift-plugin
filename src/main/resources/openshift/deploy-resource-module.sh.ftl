@@ -15,3 +15,4 @@ ${deployed.container.ocHome}/oc project ${deployed.project}
 echo "create new resource"
 ${deployed.container.ocHome}/oc create -f ${deployed.file.path} -n ${deployed.project}
 ${deployed.container.ocHome}/oc status
+${deployed.container.ocHome}/oc logout
