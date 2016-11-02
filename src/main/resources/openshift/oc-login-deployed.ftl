@@ -5,9 +5,10 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-# login to openshift and switch projects
+# login to openshift
+export KUBECONFIG=./config
 <#if deployed.container.authentication == "Basic">
-${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u=${deployed.container.username} -p="${deployed.container.password}" --insecure-skip-tls-verify=true
+${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u=${deployed.container.username} -p=${deployed.container.password} --insecure-skip-tls-verify=true
 </#if>
 <#if deployed.container.authentication == "Token">
 ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} --token=${deployed.container.openshiftToken} --insecure-skip-tls-verify=true

@@ -6,8 +6,9 @@
 
 -->
 # login to openshift and switch projects
+export KUBECONFIG=./config
 <#if container.authentication == "Basic">
-${container.ocHome}/oc login --server=${container.serverUrl} -u=${container.username} -p="${container.password}" --insecure-skip-tls-verify=true
+${container.ocHome}/oc login --server=${container.serverUrl} -u=${container.username} -p=${container.password} --insecure-skip-tls-verify=true
 </#if>
 <#if container.authentication == "Token">
 ${container.ocHome}/oc login --server=${container.serverUrl} --token=${container.openshiftToken} --insecure-skip-tls-verify=true
