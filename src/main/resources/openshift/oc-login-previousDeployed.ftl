@@ -8,13 +8,13 @@
 # login to openshift
 export KUBECONFIG=./config
 <#if previousDeployed.container.authentication == "Basic">
-${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u=${previousDeployed.container.username} -p="${previousDeployed.container.password}" --insecure-skip-tls-verify=true
+${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u=${previousDeployed.container.username} -p='${previousDeployed.container.password}' --insecure-skip-tls-verify=true
 </#if>
 <#if previousDeployed.container.authentication == "Token">
 ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} --token=${previousDeployed.container.openshiftToken} --insecure-skip-tls-verify=true
 </#if>
 <#if previousDeployed.container.authentication == "Basic Alias">
-${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u=${previousDeployed.container.credential.username} -p="${previousDeployed.container.credential.password}" --insecure-skip-tls-verify=true
+${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} -u=${previousDeployed.container.credential.username} -p='${previousDeployed.container.credential.password}' --insecure-skip-tls-verify=true
 </#if>
 <#if previousDeployed.container.authentication == "Token Alias">
 ${previousDeployed.container.ocHome}/oc login --server=${previousDeployed.container.serverUrl} --token=${previousDeployed.container.credential.openshiftToken} --insecure-skip-tls-verify=true

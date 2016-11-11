@@ -118,6 +118,10 @@
         </steps>
     </rule>
 
+    <rule name="openshift.Install_Client" scope="plan">
+        <planning-script-path>openshift/install_client.py</planning-script-path>
+    </rule>
+
     <rule name="rh.TomcatWARModule.CREATE_MODIFY_plan" scope="plan">
         <planning-script-path>rhc/plan.py</planning-script-path>
     </rule>

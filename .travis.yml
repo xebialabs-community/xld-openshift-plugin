@@ -7,7 +7,7 @@ deploy:
   provider: releases
   api_key:
     secure: VCLFgZ77ppDlMEM/Z6KiwG0MsW4SxVBlI3cgTn/L+1F6PWj9J40bT4Gp11ymydiO1P6GdPsBqUcBjo0KbeNmC6DdjEvAoJKrcBEH5w4OB0xk65ckBs4XOh6NLliMHHc9cLgo6nMNaFp04UGfngMxardani/CL4X+Llid04lQJls=
-  file: build/distributions/xld-openshift-plugin-6.1.1.xldp
+  file: build/distributions/xld-openshift-plugin-6.2.0.xldp
   skip_cleanup: true
   on:
     all_branches: true
