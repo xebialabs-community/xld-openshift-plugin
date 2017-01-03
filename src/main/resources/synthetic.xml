@@ -83,6 +83,10 @@
         <property name="project"     required="true"  description="Project Name"/>
     </type>
 
+    <type-modification type="openshift.Resource">
+        <property name="textFileNamesRegex" hidden="true" default=".+\.(cfg | conf | config | ini | properties | props | txt | asp | aspx | htm | html | jsf | jsp | xht | xhtml | sql | xml | xsd | xsl | xslt | json | yml | yaml )" />
+    </type-modification>
+
     <!-- OpenShift v2 -->
     <!-- v2 container -->
     <type type="rh.OpenShiftClient" extends="udm.BaseContainer">
