@@ -16,11 +16,11 @@ openshift:
       - 8443:8443
 
 xld:
-  image: xebialabs/xld_dev_run:v6.0.0.1
+  image: xebialabs/xld_dev_run:v6.0.2.1
   volumes:
     - ~/xl-licenses:/license
     - ./../../../../:/data
   links:
    - openshift
   ports:
-   - "4516:4516"
+   - "14516:4516"
