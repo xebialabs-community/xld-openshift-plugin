@@ -100,6 +100,7 @@
         <steps>
             <os-script>
                 <script>openshift/deploy-resource-module</script>
+                <description expression="true">"Create resource [%s] on project [%s]" % (deployed.name, deployed.project)</description>
                 <order>70</order>
             </os-script>
         </steps>
@@ -109,10 +110,12 @@
         <conditions>
             <type>openshift.ResourceModule</type>
             <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
         </conditions>
         <steps>
             <os-script>
                 <script>openshift/undeploy-resource-module</script>
+                <description expression="true">"Destroy resource [%s] on project [%s]" % (previousDeployed.name, previousDeployed.project)</description>
                 <order>40</order>
             </os-script>
         </steps>
