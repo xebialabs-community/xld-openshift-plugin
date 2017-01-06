@@ -18,7 +18,9 @@
         <!-- client -->
         <property name="ocHome" required="true" description="Location where the oc client can be found." category="client"/>
         <property name="installClient" required="false" kind="boolean" description="If true, the oc client will be downloaded, and placed under ocHome." category="client"/>
-        <property name="ocUrl" required="true" default="https://github.com/openshift/origin/releases/download/v1.2.2/openshift-origin-client-tools-v1.2.2-565691c-linux-64bit.tar.gz" description="Download url to get oc client" hidden="true" category="client"/>
+        <property name="ocUrl" required="true" default="https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz" description="Download url to get oc client" hidden="false" category="client"/>
+        <property name="zipUrl" required="true" default="http://www.7-zip.org/a/7z1604-x64.exe" hidden="true" category="client" />
+        <property name="wgetExecutable" hidden="true" default="openshift\runtime\wget.exe" category="client"/>
 
         <!-- security -->
         <property name="authentication" kind="enum" required="true" description="Define which authentication should be used" category="security">
@@ -36,7 +38,8 @@
         <method   name="check"
                   delegate="shellScript"
                   host="${thisCi.host}"
-                  script="openshift/checkOC" />
+                  script="openshift/checkOC"
+                  classpathResources="openshift/runtime/wget.exe" />
         <method   name="showResource"
                   delegate="shellScript"
                   host="${thisCi.host}"

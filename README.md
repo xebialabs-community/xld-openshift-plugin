@@ -47,18 +47,20 @@ utility on a server.
 	   
 	   `openshift.Server` extends `udm.BaseContainer`
 	   
-	   | Properties     |           Description                               |
-	   |----------------|-----------------------------------------------------|
-	   | host           | Overthere.Host that contains the `openshift.Server` |
-	   | serverUrl      | URL to the OpenShift Admin Interface                |
-	   | ocHome         | The `HOME` directory where the `oc` client is installed |
+	   | Properties     |           Description                                               |
+	   |----------------|---------------------------------------------------------------------|
+	   | host           | `overthere.Host` that contains the `openshift.Server`                 |
+	   | serverUrl      | URL to the OpenShift Admin Interface                                |
+	   | ocHome         | The `HOME` directory where the `oc` client is installed             |
+	   | installClient  | If true, the oc client will be downloaded, and placed under ocHome. |
+	   | ocUrl          | Download url to get oc client                                       |
 	   | authentication | An enumeration of possible authentication types:<ul><li>Basic</li><li>Token</li><li>Basic Alias</li><li>Token Alias</li></ul>|
-	   | username       | The usename to authenticate to the OpenShift server |
-	   | password       | The password to authenticate to the OpenShift server|
-	   | openshiftToken | An OpenShift token for token authentication         |
-	   | credential     | A Custom `openshift.Credentail` type                |
+	   | username       | The username to authenticate to the OpenShift server                 |
+	   | password       | The password to authenticate to the OpenShift server                |
+	   | openshiftToken | An OpenShift token for token authentication                         |
+	   | credential     | A Custom `openshift.Credential` type                                |
 	   
-	   Depending on the authentication method some of the properties will be required.  Required properties for specific authenticaiton methods are as follows:
+	   Depending on the authentication method some of the properties will be required.  Required properties for specific authentication methods are as follows:
 	   
 	   * **BASIC:**
 	      * Username
@@ -73,9 +75,24 @@ utility on a server.
 	      * credential `openshift.Credential`
 	         * Token
 	   
-	   The `openshift.Server` has two control tasks that can be use to verft the configuration as follows:
+	   The `openshift.Server` has two control tasks that can be use to verify the configuration as follows:
 	   * ***check:*** This control task will log into the OpenShift server using the **oc** command line tool to verify connectivity to the OpenShift server.
 	   * **showResource:** This control task can be use to check on the available resources for a project.  You will be expect to provide a project name to execute this control task.
+	   
+	   **Note**
+       To install the `oc` client, on Unix hosts, the plugin will use `wget`that should be already installed.
+       On Windows hosts, there are 2 options
+       
+       * use a version of `wget` bundled in the plugin and uploaded to perform the http request. (default option)
+       * use a _different_ `wget` that is _already present_ on the path of your target systems you can simply prevent the included version from being uploaded by modifying `SERVER_HOME/conf/deployit-defaults.properties` as follows:
+       
+       	# Classpath Resources
+       	# openshift.Server.wgetExecutable=openshift/runtime/wget.exe
+       
+       to
+       
+       	# Classpath Resources
+       	openshift.Server.wgetExecutable=[Put your path here]
 	   
 * OpenShift Deployables
 	   

@@ -22,5 +22,6 @@ for container in containers():
         order=20,
         script="openshift/install_client",
         freemarker_context={'container': container},
-        target_host=container.host)
+        target_host=container.host,
+        classpath_resources=["openshift/runtime/wget.exe"])
     )
