@@ -49,13 +49,14 @@ utility on a server.
 	   
 	   | Properties     |           Description                                               |
 	   |----------------|---------------------------------------------------------------------|
-	   | host           | `overthere.Host` that contains the `openshift.Server`                 |
+	   | host           | `overthere.Host` that contains the `openshift.Server`               |
 	   | serverUrl      | URL to the OpenShift Admin Interface                                |
 	   | ocHome         | The `HOME` directory where the `oc` client is installed             |
 	   | installClient  | If true, the oc client will be downloaded, and placed under ocHome. |
 	   | ocUrl          | Download url to get oc client                                       |
+	   | skipTLS        | Set to true if you want to skip TLS verification                    |
 	   | authentication | An enumeration of possible authentication types:<ul><li>Basic</li><li>Token</li><li>Basic Alias</li><li>Token Alias</li></ul>|
-	   | username       | The username to authenticate to the OpenShift server                 |
+	   | username       | The username to authenticate to the OpenShift server                |
 	   | password       | The password to authenticate to the OpenShift server                |
 	   | openshiftToken | An OpenShift token for token authentication                         |
 	   | credential     | A Custom `openshift.Credential` type                                |
