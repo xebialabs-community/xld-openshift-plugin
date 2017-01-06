@@ -26,6 +26,7 @@
         <conditions>
             <type>openshift.ProjectModule</type>
             <operation>DESTROY</operation>
+            <operation>MODIFY</operation>
         </conditions>
         <steps>
             <os-script>

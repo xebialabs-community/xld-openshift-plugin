@@ -5,8 +5,13 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-# login to openshift
+<#-- login to openshift and switch projects -->
+<#if deployed.container.host.os == "UNIX">
 export KUBECONFIG=./config
+</#if>
+<#if deployed.container.host.os == "WINDOWS">
+set KUBECONFIG=./config
+</#if>
 <#if deployed.container.authentication == "Basic">
 ${deployed.container.ocHome}/oc login --server=${deployed.container.serverUrl} -u=${deployed.container.username} -p='${deployed.container.password}' --insecure-skip-tls-verify=true
 </#if>

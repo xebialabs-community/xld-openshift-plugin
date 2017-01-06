@@ -38,8 +38,7 @@
         <method   name="check"
                   delegate="shellScript"
                   host="${thisCi.host}"
-                  script="openshift/checkOC"
-                  classpathResources="openshift/runtime/wget.exe" />
+                  script="openshift/checkOC" />
         <method   name="showResource"
                   delegate="shellScript"
                   host="${thisCi.host}"
