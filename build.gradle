@@ -13,7 +13,7 @@ xlDocker {
   runPortMapping = '14516:4516'
 }
 
-version="6.3.0"
+version="6.4.0"
 
 apply plugin: 'java'
 apply plugin: 'idea'
