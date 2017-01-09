@@ -7,21 +7,42 @@
 -->
 <#-- login to openshift and switch projects -->
 <#if container.host.os == "UNIX">
-export KUBECONFIG=./config
+    export KUBECONFIG=./config
+    <#if container.authentication == "Basic" || container.authentication == "Basic Alias">
+        ${container.ocHome}/oc login --server=${container.serverUrl} -u=${container.credential.username} -p='${container.credential.password}' --insecure-skip-tls-verify=${container.skipTLS?c}
+    </#if>
 </#if>
 <#if container.host.os == "WINDOWS">
-@echo off
-set KUBECONFIG=./config
+    @echo off
+    set KUBECONFIG=./config
 </#if>
-<#if container.authentication == "Basic">
-${container.ocHome}/oc login --server=${container.serverUrl} -u=${container.username} -p='${container.password}' --insecure-skip-tls-verify=${container.skipTLS?c}
-</#if>
+
+<#-- Token based authentication -->
 <#if container.authentication == "Token">
-${container.ocHome}/oc login --server=${container.serverUrl} --token=${container.openshiftToken} --insecure-skip-tls-verify=${container.skipTLS?c}
-</#if>
-<#if container.authentication == "Basic Alias">
-${container.ocHome}/oc login --server=${container.serverUrl} -u=${container.credential.username} -p='${container.credential.password}' --insecure-skip-tls-verify=${container.skipTLS?c}
+    <#assign token=container.openshiftToken />
 </#if>
 <#if container.authentication == "Token Alias">
-${container.ocHome}/oc login --server=${container.serverUrl} --token=${container.credential.openshiftToken} --insecure-skip-tls-verify=${container.skipTLS?c}
+    <#assign token=container.credential.openshiftToken />
 </#if>
+<#if container.authentication == "Token" || container.authentication == "Token Alias">
+    ${container.ocHome}/oc login --server=${container.serverUrl} --token=${token} --insecure-skip-tls-verify=${container.skipTLS?c}
+</#if>
+
+<#-- Username / password authentication -->
+<#if container.authentication == "Basic">
+    <#assign username=container.username />
+    <#assign password=container.password />
+</#if>
+<#if container.authentication == "Basic Alias">
+    <#assign username=container.credential.username />
+    <#assign password=container.credential.password />
+</#if>
+<#if container.authentication == "Basic" || container.authentication == "Basic Alias">
+    <#if container.host.os == "WINDOWS">
+        ${container.ocHome}/oc login --server=${container.serverUrl} -u=${username} -p="${password}" --insecure-skip-tls-verify=${container.skipTLS?c}
+    </#if>
+    <#if container.host.os == "UNIX">
+        ${container.ocHome}/oc login --server=${container.serverUrl} -u=${username} -p='${password}' --insecure-skip-tls-verify=${container.skipTLS?c}
+    </#if>
+</#if>
+
