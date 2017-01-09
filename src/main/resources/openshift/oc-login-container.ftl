@@ -10,6 +10,7 @@
 export KUBECONFIG=./config
 </#if>
 <#if container.host.os == "WINDOWS">
+@echo off
 set KUBECONFIG=./config
 </#if>
 <#if container.authentication == "Basic">

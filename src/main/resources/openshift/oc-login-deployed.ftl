@@ -10,6 +10,7 @@
 export KUBECONFIG=./config
 </#if>
 <#if deployed.container.host.os == "WINDOWS">
+@echo off
 set KUBECONFIG=./config
 </#if>
 <#if deployed.container.authentication == "Basic">
