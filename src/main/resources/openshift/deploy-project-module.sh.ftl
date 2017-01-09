@@ -19,7 +19,8 @@ set -e
     <#assign displayName=deployed.projectName />
 </#if>
 
-<#include "/openshift/oc-login-deployed.ftl">
+<#assign container=deployed.container />
+<#include "/openshift/oc-login-container.ftl">
 
 PROJECT_CONFIG=`${deployed.container.ocHome}/oc get projects ${deployed.projectName} | tail -1 | awk '{print $1}'`
 if [ "$PROJECT_CONFIG" == "${deployed.projectName}" ];

@@ -7,7 +7,8 @@
 -->
 #!/bin/sh
 set -e
-<#include "/openshift/oc-login-previousDeployed.ftl">
+<#assign container=previousDeployed.container />
+<#include "/openshift/oc-login-container.ftl">
 
 ${previousDeployed.container.ocHome}/oc delete project ${previousDeployed.projectName}
 ${previousDeployed.container.ocHome}/oc logout

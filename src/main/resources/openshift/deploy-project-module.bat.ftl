@@ -17,7 +17,8 @@
     <#assign displayName=deployed.projectName />
 </#if>
 
-<#include "/openshift/oc-login-deployed.ftl">
+<#assign container=deployed.container />
+<#include "/openshift/oc-login-container.ftl">
 
 ${deployed.container.ocHome}/oc new-project ${deployed.projectName} --description="${description}" --display-name="${displayName}" || goto :error
 ${deployed.container.ocHome}/oc logout || goto :error

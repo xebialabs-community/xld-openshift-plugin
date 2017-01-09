@@ -5,7 +5,8 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-<#include "/openshift/oc-login-deployed.ftl">
+<#assign container=deployed.container />
+<#include "/openshift/oc-login-container.ftl">
 
 ${deployed.container.ocHome}/oc project ${deployed.project} || goto :error
 

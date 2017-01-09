@@ -7,7 +7,8 @@
 -->
 #!/bin/sh
 set -e
-<#include "/openshift/oc-login-deployed.ftl">
+<#assign container=deployed.container />
+<#include "/openshift/oc-login-container.ftl">
 
 ${deployed.container.ocHome}/oc project ${deployed.project}
 
