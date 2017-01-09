@@ -9,7 +9,10 @@
 
 <#-- determine if this app already exists, if not deploy a new one -->
 echo "destroy resource"
-${previousDeployed.container.ocHome}/oc project ${previousDeployed.project}
-${previousDeployed.container.ocHome}/oc delete -f ${previousDeployed.file.path}
-${previousDeployed.container.ocHome}/oc status
-${previousDeployed.container.ocHome}/oc logout
+${previousDeployed.container.ocHome}/oc project ${previousDeployed.project} || goto :error
+${previousDeployed.container.ocHome}/oc delete -f ${previousDeployed.file.path} || goto :error
+${previousDeployed.container.ocHome}/oc status || goto :error
+${previousDeployed.container.ocHome}/oc logout || goto :error
+goto :EOF
+
+<#include "/openshift/error.bat.ftl">

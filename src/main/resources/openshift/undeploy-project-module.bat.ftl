@@ -7,5 +7,8 @@
 -->
 <#include "/openshift/oc-login-previousDeployed.ftl">
 
-${previousDeployed.container.ocHome}/oc delete project ${previousDeployed.projectName}
-${previousDeployed.container.ocHome}/oc logout
+${previousDeployed.container.ocHome}/oc delete project ${previousDeployed.projectName} || goto :error
+${previousDeployed.container.ocHome}/oc logout || goto :error
+goto :EOF
+
+<#include "/openshift/error.bat.ftl">

@@ -7,6 +7,10 @@
 -->
 <#include "/openshift/oc-login-container.ftl">
 
-${container.ocHome}/oc status
-${container.ocHome}/oc logout
+${container.ocHome}/oc status || goto :error
+${container.ocHome}/oc logout || goto :error
+
+goto :EOF
+
+<#include "/openshift/error.bat.ftl">
 

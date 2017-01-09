@@ -19,5 +19,8 @@
 
 <#include "/openshift/oc-login-deployed.ftl">
 
-${deployed.container.ocHome}/oc new-project ${deployed.projectName} --description="${description}" --display-name="${displayName}"
-${deployed.container.ocHome}/oc logout
+${deployed.container.ocHome}/oc new-project ${deployed.projectName} --description="${description}" --display-name="${displayName}" || goto :error
+${deployed.container.ocHome}/oc logout || goto :error
+goto :EOF
+
+<#include "/openshift/error.bat.ftl">
