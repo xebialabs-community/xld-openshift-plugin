@@ -86,15 +86,15 @@ utility on a server.
        
        * use a version of `wget` bundled in the plugin and uploaded to perform the http request. (default option)
        * use a _different_ `wget` that is _already present_ on the path of your target systems you can simply prevent the included version from being uploaded by modifying `SERVER_HOME/conf/deployit-defaults.properties` as follows:
-       
+       ```
        	# Classpath Resources
        	# openshift.Server.wgetExecutable=openshift/runtime/wget.exe
-       
+       ```
        to
-       
+       ```
        	# Classpath Resources
        	openshift.Server.wgetExecutable=[Put your path here]
-	   
+	   ```
 * OpenShift Deployables
 	   
     * **openshift.Project:**
