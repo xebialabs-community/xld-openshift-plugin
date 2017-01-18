@@ -14,7 +14,7 @@ ${deployed.container.ocHome}/oc project ${deployed.project}
 
 echo "Check if build config already exists"
 check=$(${deployed.container.ocHome}/oc get bc ${deployed.appName} --output=name | grep ${deployed.appName}) || echo "nobuildconfig"
-expected =buildconfig/${deployed.appName}
+expected=buildconfig/${deployed.appName}
 if [ "$check" = "$expected" ] ; then
     echo "Build config already exists"
     ${deployed.container.ocHome}/oc start-build ${deployed.appName} --from-dir=${deployed.file.path} --follow=true

@@ -66,7 +66,7 @@
 
     <rule name="openshift.BinaryAppModule.CREATE_MODIFY" scope="deployed">
         <conditions>
-            <type>openshift.DockerfileAppModule</type>
+            <type>openshift.BinaryAppModule</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
         </conditions>
