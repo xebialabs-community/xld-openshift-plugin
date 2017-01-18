@@ -66,7 +66,7 @@
 
     <rule name="openshift.BinaryAppModule.CREATE_MODIFY" scope="deployed">
         <conditions>
-            <type>openshift.BinaryAppModule</type>
+            <type>openshift.DockerfileAppModule</type>
             <operation>CREATE</operation>
             <operation>MODIFY</operation>
         </conditions>
@@ -78,9 +78,24 @@
         </steps>
     </rule>
 
-    <rule name="openshift.BinaryAppModule.DESTROY" scope="deployed">
+    <rule name="openshift.DockerfileAppModule.CREATE_MODIFY" scope="deployed">
+        <conditions>
+            <type>openshift.DockerfileAppModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/deploy-dockerfile-app-module</script>
+                <order>61</order>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="openshift.SourceAppModule.DESTROY" scope="deployed">
         <conditions>
             <type>openshift.BinaryAppModule</type>
+            <type>openshift.DockerfileAppModule</type>
             <operation>DESTROY</operation>
             <operation>MODIFY</operation>
         </conditions>

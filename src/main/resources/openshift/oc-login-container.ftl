@@ -8,9 +8,6 @@
 <#-- login to openshift and switch projects -->
 <#if container.host.os == "UNIX">
     export KUBECONFIG=./config
-    <#if container.authentication == "Basic" || container.authentication == "Basic Alias">
-        ${container.ocHome}/oc login --server=${container.serverUrl} -u=${container.credential.username} -p='${container.credential.password}' --insecure-skip-tls-verify=${container.skipTLS?c}
-    </#if>
 </#if>
 <#if container.host.os == "WINDOWS">
     @echo off

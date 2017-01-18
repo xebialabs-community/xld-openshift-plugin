@@ -80,6 +80,14 @@
         <property name="imageStream" required="true" label="Image Stream" description="Name of an image stream to to use as a builder."/>
     </type>
 
+    <!-- Allows uploading a Dockerfile as source -->
+    <type type="openshift.DockerfileAppModule" extends="udm.BaseDeployedArtifact" deployable-type="openshift.DockerfileApp"
+          container-type="openshift.Server" description="OpenShift Dockerfile App">
+        <generate-deployable type="openshift.DockerfileApp" extends="udm.BaseDeployableArtifact"/>
+        <property name="appName" required="true"/>
+        <property name="project" required="true"/>
+    </type>
+
     <type type="openshift.ResourceModule" extends="udm.BaseDeployedArtifact" deployable-type="openshift.Resource"
           container-type="openshift.Server" description="OpenShift Resource">
         <generate-deployable type="openshift.Resource" extends="udm.BaseDeployableArtifact"/>

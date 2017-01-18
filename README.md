@@ -136,6 +136,16 @@ utility on a server.
       | project             | OpenShift project name.           |
       | imageStream         | The input stream to use as the builder |
       
+    * **openshift.DockerfileApp:**
+      An OpenShift Docker App is an actual Dockerfile that should be deployed to a OpenShift project.  The Dockerfile app module is defined as follows:
+      
+      `openshift.DockerfileAppModule` extends `udm.BasedDeployedArtifact`
+      
+      |  Properties         |       Description                 |
+      |---------------------|-----------------------------------|
+      | appName             | OpenShift application name        |
+      | project             | OpenShift project name.           |
+      
     * **openshift.ResourceModule:** The resource module defines the resources availble to the project.  The definition of the resources are defined in a YAML file attached to this deployable.  The Resource Modules is defined as follows:
     
       `openshift.ResourceModule` extends `udm.BaseDeployedArtifact`
