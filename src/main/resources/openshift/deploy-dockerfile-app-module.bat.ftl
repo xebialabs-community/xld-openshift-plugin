@@ -11,7 +11,7 @@
 ${deployed.container.ocHome}/oc project ${deployed.project} || goto :error
 
 echo "Check if build config already exists"
-STE check=${deployed.container.ocHome}/oc get bc ${deployed.appName} --output=name | grep ${deployed.appName} || echo "nobuildconfig"
+SET check=${deployed.container.ocHome}/oc get bc ${deployed.appName} --output=name | grep ${deployed.appName} || echo "nobuildconfig"
 SET expected=buildconfig/${deployed.appName}
 if "%check%"=="%expected%" (
     echo "Build config already exists"
