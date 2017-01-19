@@ -17,11 +17,11 @@ check=$(${deployed.container.ocHome}/oc get bc ${deployed.appName} --output=name
 expected=buildconfig/${deployed.appName}
 if [ "$check" = "$expected" ] ; then
     echo "Build config already exists"
-    ${deployed.container.ocHome}/oc start-build ${deployed.appName} --from-dir=${deployed.file.path} --follow=true
+    ${deployed.container.ocHome}/oc start-build ${deployed.appName} --from-file=${deployed.file.path} --follow=true
 else
     echo "Build config doesn't exist yet. Creating."
     ${deployed.container.ocHome}/oc new-build --strategy=docker --binary=true --name=${deployed.appName}
-    ${deployed.container.ocHome}/oc start-build ${deployed.appName} --from-dir=${deployed.file.path} --follow=true
+    ${deployed.container.ocHome}/oc start-build ${deployed.appName} --from-file=${deployed.file.path} --follow=true
     ${deployed.container.ocHome}/oc new-app --name=${deployed.appName}
     ${deployed.container.ocHome}/oc expose svc ${deployed.appName}
 fi

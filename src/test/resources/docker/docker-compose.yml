@@ -11,6 +11,8 @@ openshift:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
       - /sys:/sys
+      - /var/lib/docker:/var/lib/docker:rw
+      - /var/lib/origin/openshift.local.volumes:/var/lib/origin/openshift.local.volumes:rslave
     command: start
     ports:
       - 8443:8443
