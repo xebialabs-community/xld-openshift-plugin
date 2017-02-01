@@ -1,51 +1,52 @@
 import org.apache.tools.ant.filters.ReplaceTokens
+
 plugins {
-    id "com.github.hierynomus.license" version "0.13.0"
-    id "com.xebialabs.xldp" version "1.0.5"
-    id "com.xebialabs.xl.docker" version "1.0.0"
+  id "com.github.hierynomus.license" version "0.13.0"
+  id "com.xebialabs.xldp" version "1.0.5"
+  id "com.xebialabs.xl.docker" version "1.0.0"
 }
 
 xlDocker {
   compileImage = 'xebialabs/xld_dev_compile'
-  compileVersion = 'v6.0.2.1'
+  compileVersion = 'v6.1.0.1'
   runImage = 'xebialabs/xld_dev_run'
-  runVersion = 'v6.0.2.1'
+  runVersion = 'v6.1.0.1'
   runPortMapping = '14516:4516'
 }
 
-version="6.5.0"
+version = "7.0.0"
 
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
-def apiVersion = '2015.6.3'
+def apiVersion = '2016.2.2'
 
 repositories {
-    mavenLocal()
-    mavenCentral()
-    maven {
-        credentials {
-            username 'community-plugins'
-            password 'community'
-        }
-        url 'http://nexus.xebialabs.com/nexus/content/repositories/releases'
+  mavenLocal()
+  mavenCentral()
+  maven {
+    credentials {
+      username 'community-plugins'
+      password 'community'
     }
+    url 'http://nexus.xebialabs.com/nexus/content/repositories/releases'
+  }
 }
 
 dependencies {
-    compile "com.xebialabs.deployit:udm-plugin-api:$apiVersion"
+  compile "com.xebialabs.deployit:udm-plugin-api:$apiVersion"
 }
 
 processResources.configure {
-    filter ReplaceTokens, tokens: [
-            'project.version': version.toString(),
-            'project.name': rootProject.name
-    ]
+  filter ReplaceTokens, tokens: [
+    'project.version': version.toString(),
+    'project.name'   : rootProject.name
+  ]
 }
 
 license {
-    header rootProject.file('src/main/license/xebialabs_community.license')
-    strictCheck true
+  header rootProject.file('src/main/license/xebialabs_community.license')
+  strictCheck true
 }

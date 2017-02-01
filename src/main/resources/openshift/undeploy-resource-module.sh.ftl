@@ -7,12 +7,12 @@
 -->
 #!/bin/sh
 set -e
-<#assign container=previousDeployed.container />
+<#assign container=previousDeployed.container.server />
 <#include "/openshift/oc-login-container.ftl">
 
 # determine if this app already exists, if not deploy a new one
 echo "destroy resource"
-${previousDeployed.container.ocHome}/oc project ${previousDeployed.project}
-${previousDeployed.container.ocHome}/oc delete -f ${previousDeployed.file.path}
-${previousDeployed.container.ocHome}/oc status
-${previousDeployed.container.ocHome}/oc logout
+${previousDeployed.container.server.ocHome}/oc project ${previousDeployed.container.projectName}
+${previousDeployed.container.server.ocHome}/oc delete -f ${previousDeployed.file.path}
+${previousDeployed.container.server.ocHome}/oc status
+${previousDeployed.container.server.ocHome}/oc logout

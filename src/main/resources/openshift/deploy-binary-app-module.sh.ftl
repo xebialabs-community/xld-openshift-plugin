@@ -7,19 +7,19 @@
 -->
 #!/bin/sh
 set -e
-<#assign container=deployed.container />
+<#assign container=deployed.container.server />
 <#include "/openshift/oc-login-container.ftl">
 
-${deployed.container.ocHome}/oc project ${deployed.project}
+${deployed.container.server.ocHome}/oc project ${deployed.container.projectName}
 
 # determine if this app already exists, if not deploy a new one
 echo "create new app automatically"
 mkdir -p deployments
 cp "${deployed.file.path}" deployments
-${deployed.container.ocHome}/oc new-build --image-stream=${deployed.imageStream} --binary=true --name=${deployed.appName}
-${deployed.container.ocHome}/oc start-build ${deployed.appName} --from-dir=.
-${deployed.container.ocHome}/oc new-app --name=${deployed.appName}
-${deployed.container.ocHome}/oc expose svc ${deployed.appName}
-${deployed.container.ocHome}/oc status
+${deployed.container.server.ocHome}/oc new-build --image-stream=${deployed.imageStream} --binary=true --name=${deployed.appName}
+${deployed.container.server.ocHome}/oc start-build ${deployed.appName} --from-dir=.
+${deployed.container.server.ocHome}/oc new-app --name=${deployed.appName}
+${deployed.container.server.ocHome}/oc expose svc ${deployed.appName}
+${deployed.container.server.ocHome}/oc status
 rm -rf deployments
-${deployed.container.ocHome}/oc logout
+${deployed.container.server.ocHome}/oc logout

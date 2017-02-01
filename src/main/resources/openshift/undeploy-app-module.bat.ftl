@@ -5,13 +5,13 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-<#assign container=previousDeployed.container />
+<#assign container=previousDeployed.container.server />
 <#include "/openshift/oc-login-container.ftl">
 
-${previousDeployed.container.ocHome}/oc project ${previousDeployed.project} || goto :error
+${previousDeployed.container.server.ocHome}/oc project ${previousDeployed.container.projectName} || goto :error
 
-${previousDeployed.container.ocHome}/oc delete all -l app=${previousDeployed.appName} || goto :error
-${previousDeployed.container.ocHome}/oc logout || goto :error
+${previousDeployed.container.server.ocHome}/oc delete all -l app=${previousDeployed.appName} || goto :error
+${previousDeployed.container.server.ocHome}/oc logout || goto :error
 goto :EOF
 
 <#include "/openshift/error.bat.ftl">

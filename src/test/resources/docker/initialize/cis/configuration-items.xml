@@ -1,74 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
-    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
-
--->
 <xl:export xmlns:xl="http://www.xebialabs.com/xl-export">
   <xl:metadata>
     <xl:exported-by>admin</xl:exported-by>
-    <xl:exported-at>2016-10-05T16:15:30.160+0000</xl:exported-at>
-    <xl:exported-format-version>5.5.3</xl:exported-format-version>
+    <xl:exported-at>2017-02-01T03:46:41.715+0000</xl:exported-at>
+    <xl:exported-format-version>6.1.0</xl:exported-format-version>
     <xl:encryption-key-fingerprint>f6094d333c0736339884d1fe38d9c54e14019ac9</xl:encryption-key-fingerprint>
   </xl:metadata>
   <xl:exported-configuration-items exported-root-id="/">
-    <udm.DeploymentPackage id="Applications/OpenShift App/1.0.0" created-by="admin" created-at="2016-10-05T16:02:58.549+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:02:58.549+0000">
+    <udm.DeploymentPackage id="Applications/OpenShift App/1.0.0" created-by="admin" created-at="2017-02-01T03:16:32.374+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.374+0000">
       <orchestrator />
       <applicationDependencies />
+      <dependencyResolution>LATEST</dependencyResolution>
+      <undeployDependencies>false</undeployDependencies>
     </udm.DeploymentPackage>
-    <udm.Environment id="Environments/OpenShift" created-by="admin" created-at="2016-10-05T16:02:16.513+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:02:16.513+0000">
+    <udm.ProvisioningPackage id="Applications/OpenShift Project/1.0.0" created-by="admin" created-at="2017-02-01T03:16:32.375+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.375+0000">
+      <orchestrator />
+      <applicationDependencies />
+      <dependencyResolution>LATEST</dependencyResolution>
+      <undeployDependencies>false</undeployDependencies>
+      <boundTemplates />
+    </udm.ProvisioningPackage>
+    <udm.Environment id="Environments/OpenShift" created-by="admin" created-at="2017-02-01T03:16:32.360+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:44:57.192+0000">
       <members>
         <ci ref="Infrastructure/openshift client/OpenShift v3 Server" />
       </members>
       <dictionaries />
       <triggers />
     </udm.Environment>
-    <udm.Application id="Applications/OpenShift App" created-by="admin" created-at="2016-10-05T16:02:30.197+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:02:58.626+0000">
+    <udm.Application id="Applications/OpenShift App" created-by="admin" created-at="2017-02-01T03:16:32.369+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.369+0000">
       <lastVersion>1.0.0</lastVersion>
     </udm.Application>
-    <openshift.Server id="Infrastructure/openshift client/OpenShift v3 Server" created-by="admin" created-at="2016-10-05T16:02:01.101+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:02:01.101+0000">
+    <udm.Application id="Applications/OpenShift Project" created-by="admin" created-at="2017-02-01T03:16:32.370+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.370+0000">
+      <lastVersion>1.0.0</lastVersion>
+    </udm.Application>
+    <udm.Environment id="Environments/OpenShift apps" created-by="admin" created-at="2017-02-01T03:39:50.984+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:44:43.117+0000">
+      <members />
+      <dictionaries />
+      <triggers />
+    </udm.Environment>
+    <template.openshift.Server id="Applications/OpenShift Project/1.0.0/openshift client apps/OpenShift v3 Server" created-by="admin" created-at="2017-02-01T03:23:42.639+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:36:56.955+0000">
       <tags />
-      <serverUrl>http://openshift:8080</serverUrl>
-      <ocHome>/opt/openshift</ocHome>
+      <serverUrl>https://172.17.0.1:8443</serverUrl>
+      <ocHome>/tmp/openshift</ocHome>
+      <installClient>true</installClient>
+      <ocUrl>https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz</ocUrl>
+      <skipTLS>true</skipTLS>
+      <authentication>Basic</authentication>
+      <username>admin</username>
+      <password>{b64}YFKOzMTEICsqFJ592l2FbQ==</password>
+    </template.openshift.Server>
+    <openshift.Server id="Infrastructure/openshift client/OpenShift v3 Server" created-by="admin" created-at="2017-02-01T03:16:32.376+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:23:40.969+0000">
+      <tags />
+      <serverUrl>https://172.17.0.1:8443</serverUrl>
+      <ocHome>/tmp/openshift</ocHome>
+      <installClient>true</installClient>
+      <ocUrl>https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz</ocUrl>
+      <skipTLS>true</skipTLS>
       <authentication>Basic</authentication>
       <username>admin</username>
       <password>{b64}YFKOzMTEICsqFJ592l2FbQ==</password>
     </openshift.Server>
-    <overthere.SshHost id="Infrastructure/openshift client" created-by="admin" created-at="2016-10-05T16:01:16.446+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:01:16.446+0000">
+    <overthere.SshHost id="Infrastructure/openshift client" created-by="admin" created-at="2017-02-01T03:16:32.372+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:20:03.682+0000">
       <tags />
       <os>UNIX</os>
+      <puppetPath>/usr/local/bin</puppetPath>
       <connectionType>SFTP</connectionType>
-      <address>172.0.0.1</address>
+      <address>172.17.0.1</address>
       <port>22</port>
       <username>admin</username>
-      <password>{b64}YFKOzMTEICsqFJ592l2FbQ==</password>
+      <password>admins</password>
     </overthere.SshHost>
-    <openshift.App id="Applications/OpenShift App/1.0.0/test app" created-by="admin" created-at="2016-10-05T16:04:39.921+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:04:39.921+0000">
+    <template.overthere.SshHost id="Applications/OpenShift Project/1.0.0/openshift client apps" created-by="admin" created-at="2017-02-01T03:20:50.924+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:36:58.564+0000">
+      <tags />
+      <os>UNIX</os>
+      <puppetPath>/usr/local/bin</puppetPath>
+      <connectionType>SFTP</connectionType>
+      <address>172.17.0.1</address>
+      <port>22</port>
+      <username>admin</username>
+      <password>admin</password>
+    </template.overthere.SshHost>
+    <openshift.App id="Applications/OpenShift App/1.0.0/test app" created-by="admin" created-at="2017-02-01T03:16:32.377+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.377+0000">
       <tags />
       <appName>test app</appName>
-      <project>testing</project>
       <dockerUrl>http://hub.docker.com</dockerUrl>
       <dockerOrganization>xebialabs</dockerOrganization>
       <dockerName>xebialabs</dockerName>
       <dockerTag>1.2.3</dockerTag>
     </openshift.App>
-    <openshift.BinaryApp id="Applications/OpenShift App/1.0.0/testBinaryApp" created-by="admin" created-at="2016-10-05T16:06:11.077+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:06:11.077+0000" file="Applications/OpenShift App/1.0.0/testBinaryApp/CD Landscape.jpg">
+    <openshift.BinaryApp id="Applications/OpenShift App/1.0.0/testBinaryApp" created-by="admin" created-at="2017-02-01T03:16:32.389+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.389+0000" file="Applications/OpenShift App/1.0.0/testBinaryApp/CD Landscape.jpg">
       <tags />
       <scanPlaceholders>true</scanPlaceholders>
       <placeholders />
       <checksum>3fbb52098893d99198d0a3b077ada094a061fd8a</checksum>
       <fileUri>jcr:CD+Landscape.jpg</fileUri>
       <appName>binApp</appName>
-      <project>testing</project>
       <imageStream>somestream</imageStream>
     </openshift.BinaryApp>
-    <openshift.Project id="Applications/OpenShift App/1.0.0/testing" created-by="admin" created-at="2016-10-05T16:03:22.179+0000" last-modified-by="admin" last-modified-at="2016-10-05T16:03:22.179+0000">
+    <openshift.ProjectSpec id="Applications/OpenShift Project/1.0.0/testing" created-by="admin" created-at="2017-02-01T03:16:32.390+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:36:42.695+0000">
+      <tags />
+      <cardinality>1</cardinality>
+      <boundTemplates>
+        <ci ref="Applications/OpenShift Project/1.0.0/openshift client apps" />
+      </boundTemplates>
+      <provisioners />
+      <projectName>testing</projectName>
+      <description>Project for testing</description>
+      <projectDisplayName>TST</projectDisplayName>
+    </openshift.ProjectSpec>
+    <template.openshift.Project id="Applications/OpenShift Project/1.0.0/openshift client apps/OpenShift v3 Server/testingproject" created-by="admin" created-at="2017-02-01T03:35:38.209+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:35:38.209+0000">
       <tags />
       <projectName>testing</projectName>
       <description>Project for testing</description>
       <projectDisplayName>TST</projectDisplayName>
-    </openshift.Project>
+    </template.openshift.Project>
   </xl:exported-configuration-items>
 </xl:export>

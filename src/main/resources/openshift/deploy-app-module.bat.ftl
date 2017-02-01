@@ -5,17 +5,17 @@
     FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 
 -->
-<#assign container=deployed.container />
+<#assign container=deployed.container.server />
 <#include "/openshift/oc-login-container.ftl">
 
-${deployed.container.ocHome}/oc project ${deployed.project} || goto :error
+${deployed.container.server.ocHome}/oc project ${deployed.container.projectName} || goto :error
 
 <#-- determine if this app already exists, if not deploy a new one -->
 echo "create new app automatically"
-${deployed.container.ocHome}/oc new-app <#if deployed.dockerUrl?has_content>${deployed.dockerUrl}/</#if><#if deployed.dockerOrganization?has_content>${deployed.dockerOrganization}/</#if>${deployed.dockerName}<#if deployed.dockerTag?has_content>:${deployed.dockerTag}</#if> --name=${deployed.appName} || goto :error
-${deployed.container.ocHome}/oc expose service ${deployed.appName} || goto :error
-${deployed.container.ocHome}/oc status || goto :error
-${deployed.container.ocHome}/oc logout || goto :error
+${deployed.container.server.ocHome}/oc new-app <#if deployed.dockerUrl?has_content>${deployed.dockerUrl}/</#if><#if deployed.dockerOrganization?has_content>${deployed.dockerOrganization}/</#if>${deployed.dockerName}<#if deployed.dockerTag?has_content>:${deployed.dockerTag}</#if> --name=${deployed.appName} || goto :error
+${deployed.container.server.ocHome}/oc expose service ${deployed.appName} || goto :error
+${deployed.container.server.ocHome}/oc status || goto :error
+${deployed.container.server.ocHome}/oc logout || goto :error
 goto :EOF
 
 <#include "/openshift/error.bat.ftl">

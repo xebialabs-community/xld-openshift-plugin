@@ -13,12 +13,14 @@ def containers():
         current_container = deployed.container
         if _delta.operation != "NOOP" and current_container.type == "openshift.Server" and current_container.installClient:
             result.add(current_container)
+        if _delta.operation != "NOOP" and current_container.type == "openshift.ProjectModule" and current_container.server.installClient:
+            result.add(current_container.server)
     return result
 
 
 for container in containers():
     context.addStep(steps.os_script(
-        description="Installing client on server %s" % container.name,
+        description="Installing client for openshift server [%s]" % container.name,
         order=20,
         script="openshift/install_client",
         freemarker_context={'container': container},

@@ -7,9 +7,10 @@
 -->
 #!/bin/sh
 set -e
+<#assign container=container.server />
 <#include "/openshift/oc-login-container.ftl">
 
-${container.ocHome}/oc describe quota -n ${params.projectName}
-${container.ocHome}/oc logout
+${container.server.ocHome}/oc describe quota -n ${params.projectName}
+${container.server.ocHome}/oc logout
 
 

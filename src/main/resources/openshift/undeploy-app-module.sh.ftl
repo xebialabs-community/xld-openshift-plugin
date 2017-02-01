@@ -7,10 +7,10 @@
 -->
 #!/bin/sh
 set -e
-<#assign container=previousDeployed.container />
+<#assign container=previousDeployed.container.server />
 <#include "/openshift/oc-login-container.ftl">
 
-${previousDeployed.container.ocHome}/oc project ${previousDeployed.project}
+${previousDeployed.container.server.ocHome}/oc project ${previousDeployed.container.projectName}
 
-${previousDeployed.container.ocHome}/oc delete all -l app=${previousDeployed.appName}
-${previousDeployed.container.ocHome}/oc logout
+${previousDeployed.container.server.ocHome}/oc delete all -l app=${previousDeployed.appName}
+${previousDeployed.container.server.ocHome}/oc logout

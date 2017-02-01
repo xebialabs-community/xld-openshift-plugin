@@ -21,12 +21,13 @@ See the **XL Deploy Reference Manual** for background information on XL Deploy a
 
 # Overview #
 
-This XLD OpenShift plugin supports v2 & v3 OpenShift implementations.  This plugin allows you to manage the deployment of OpenShift projects, containers and resources to your OpenShift infrastructure.  Additionaly this plugin still supports doing WAR deployment to OpenShift JBoss gear. It uses rhc client to push to OpenShift environments.
+This XLD OpenShift plugin supports v2 & v3 OpenShift implementations.  This plugin allows you to manage the deployment of OpenShift projects, containers and resources to your OpenShift infrastructure.  Additionally this plugin still supports doing WAR deployment to OpenShift JBoss gear. It uses rhc client to push to OpenShift environments.
 
 # Requirements #
 
 * **Requirements**
-	* **XL Deploy** 5.1.3+
+	* From version v7.x+, XLD 6.x is required.
+	* **Remark**: version v7.x+ breaks compatibility with previous versions! 
 	* **rhc client on target machine for OpenShift v2** 
 	* **oc client on target machine for OpenShift v3** 
 
@@ -43,7 +44,7 @@ utility on a server.
 * OpenShift Containers
 
 	* **openshift.Server**
-	   The `openshift.server` represents the Open Shift server and is the container where the open shift `oc` commands will be exectued.  The `openshift.Server` container object is defined as follows:
+	   The `openshift.server` represents the OpenShift server and is the container where the open shift `oc` commands will be exectued.  The `openshift.Server` container object is defined as follows:
 	   
 	   `openshift.Server` extends `udm.BaseContainer`
 	   
@@ -95,24 +96,36 @@ utility on a server.
        	# Classpath Resources
        	openshift.Server.wgetExecutable=[Put your path here]
 	   ```
-* OpenShift Deployables
 	   
-    * **openshift.Project:**
-       An OpenShift project Module.  The project module is defined as follows:
+    * **openshift.Project**
+       An OpenShift project.  The project module is defined as follows:
     
-       `openshift.ProjectModule` extends `udm.BasedDeployed`
+       `openshift.Project` extends `udm.BaseContainer`
     
        | Properties      |         Description                      |
        |-----------------|------------------------------------------|
        | projectName     | A name for the project                   |
        | description     | A description of this project            |
        | projectDisplayName | A human readable name for the project |
+
+* OpenShift Provisionables
+    * **openshift.openshift.ProjectSpec**
+       An OpenShift project spec.  The project spec is defined as follows:
     
+       `openshift.ProjectSpec` extends `udm.BaseProvisionable`
     
-    * **openshift.App:**
+       | Properties      |         Description                      |
+       |-----------------|------------------------------------------|
+       | projectName     | A name for the project                   |
+       | description     | A description of this project            |
+       | projectDisplayName | A human readable name for the project |
+
+* OpenShift Deployables
+	       
+    * **openshift.App**
        The OpenShift App is a container image that can be deployed from a registry.  By default XLD will deploy container images from the Docker Hub, but it is possible to supply and internal URL for a local repository.  The App module is defined as follows:
        
-       `openshift.App` extends `udm.BaseDeployed`
+       `openshift.App` extends `udm.BaseDeployable`
        
        | Properties         |        Description                |
        |--------------------|-----------------------------------|
@@ -128,7 +141,7 @@ utility on a server.
     * **openshift.BinaryApp:**
       An OpenShift Binary App is an actual container file that should be deployed to a OpenShift project.  The Binary App module is defined as follows:
       
-      `openshift.BinaryAppModule` extends `udm.BasedDeployedArtifact`
+      `openshift.BinaryAppModule` extends `udm.BaseDeployableArtifact`
       
       |  Properties         |       Description                 |
       |---------------------|-----------------------------------|
@@ -139,7 +152,7 @@ utility on a server.
     * **openshift.DockerfileApp:**
       An OpenShift Docker App is an actual Dockerfile that should be deployed to a OpenShift project.  The Dockerfile app module is defined as follows:
       
-      `openshift.DockerfileAppModule` extends `udm.BasedDeployedArtifact`
+      `openshift.DockerfileAppModule` extends `udm.BaseDeployableArtifact`
       
       |  Properties         |       Description                 |
       |---------------------|-----------------------------------|
@@ -148,7 +161,7 @@ utility on a server.
       
     * **openshift.ResourceModule:** The resource module defines the resources availble to the project.  The definition of the resources are defined in a YAML file attached to this deployable.  The Resource Modules is defined as follows:
     
-      `openshift.ResourceModule` extends `udm.BaseDeployedArtifact`
+      `openshift.ResourceModule` extends `udm.BaseDeployableArtifact`
     
       |  Properties         |       Description                 |
       |---------------------|-----------------------------------|
