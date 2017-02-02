@@ -12,5 +12,23 @@ set -e
 
 ${previousDeployed.container.server.ocHome}/oc project ${previousDeployed.container.projectName}
 
-${previousDeployed.container.server.ocHome}/oc delete all -l app=${previousDeployed.appName}
+<#if previousDeployed.blueGreen>
+    <#if operation?has_content>
+        echo "Removing old app"
+        check=$(${deployed.container.server.ocHome}/oc get route ${deployed.appName} -o template --template="{{.spec.to.name}}")
+        if [ "$check" = "${deployed.appName}-blue" ] ; then
+            echo "App currently in blue state, removing green"
+            appName=${deployed.appName}-green
+        else
+            echo "App currently in green state, removing blue"
+            appName=${deployed.appName}-blue
+        fi
+    <#else>
+        echo "Check what status the app is in (blue or green)"
+        appName=$(${previousDeployed.container.server.ocHome}/oc get route ${previousDeployed.appName} -o template --template="{{.spec.to.name}}")
+    </#if>
+<#else>
+    appName=${previousDeployed.appName}
+</#if>
+${previousDeployed.container.server.ocHome}/oc delete all -l app=$appName
 ${previousDeployed.container.server.ocHome}/oc logout

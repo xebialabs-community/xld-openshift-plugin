@@ -5,8 +5,9 @@
 #
 
 openshift:
-    image: openshift/origin
+    image: openshift/origin:v1.4.1
     privileged: true
+    net: "host"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -22,7 +23,5 @@ xld:
   volumes:
     - ~/xl-licenses:/license
     - ./../../../../:/data
-  links:
-   - openshift
   ports:
    - "14516:4516"

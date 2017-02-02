@@ -171,3 +171,9 @@ utility on a server.
     
     
 * OpenShift v2
+
+# References #
++ CLI operations: [Basic intro](https://docs.openshift.org/latest/cli_reference/basic_cli_operations.html)
++ Blue-green: [Blue green deployments](https://blog.openshift.com/openshift-3-demo-part-10-blue-green-deployments/)
++ Routes: 
+    + [cli](https://docs.openshift.com/container-platform/latest/dev_guide/routes.html)

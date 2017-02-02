@@ -14,7 +14,19 @@ ${deployed.container.server.ocHome}/oc project ${deployed.container.projectName}
 
 # determine if this app already exists, if not deploy a new one
 echo "create new app automatically"
-${deployed.container.server.ocHome}/oc new-app <#if deployed.dockerUrl?has_content>${deployed.dockerUrl}/</#if><#if deployed.dockerOrganization?has_content>${deployed.dockerOrganization}/</#if>${deployed.dockerName}<#if deployed.dockerTag?has_content>:${deployed.dockerTag}</#if> --name=${deployed.appName}
-${deployed.container.server.ocHome}/oc expose service ${deployed.appName}
+<#if deployed.blueGreen>
+    echo "Check what status the app is in (blue or green)"
+    check=$(${deployed.container.server.ocHome}/oc get route ${deployed.appName} -o template --template="{{.spec.to.name}}") || echo "dummy"
+    if [ "$check" = "${deployed.appName}-blue" ] ; then
+        echo "App currently in blue state, creating green"
+        appName=${deployed.appName}-green
+    else
+        echo "App currently in green state, creating blue"
+        appName=${deployed.appName}-blue
+    fi
+<#else>
+    appName=${deployed.appName}
+</#if>
+${deployed.container.server.ocHome}/oc new-app <#if deployed.dockerUrl?has_content>${deployed.dockerUrl}/</#if><#if deployed.dockerOrganization?has_content>${deployed.dockerOrganization}/</#if>${deployed.dockerName}<#if deployed.dockerTag?has_content>:${deployed.dockerTag}</#if> --name=$appName
 ${deployed.container.server.ocHome}/oc status
 ${deployed.container.server.ocHome}/oc logout

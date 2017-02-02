@@ -47,7 +47,7 @@
     </udm.Environment>
     <template.openshift.Server id="Applications/OpenShift Project/1.0.0/openshift client apps/OpenShift v3 Server" created-by="admin" created-at="2017-02-01T03:23:42.639+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:36:56.955+0000">
       <tags />
-      <serverUrl>https://172.17.0.1:8443</serverUrl>
+      <serverUrl>https://localhost:8443</serverUrl>
       <ocHome>/tmp/openshift</ocHome>
       <installClient>true</installClient>
       <ocUrl>https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz</ocUrl>
@@ -58,7 +58,7 @@
     </template.openshift.Server>
     <openshift.Server id="Infrastructure/openshift client/OpenShift v3 Server" created-by="admin" created-at="2017-02-01T03:16:32.376+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:23:40.969+0000">
       <tags />
-      <serverUrl>https://172.17.0.1:8443</serverUrl>
+      <serverUrl>https://localhost:8443</serverUrl>
       <ocHome>/tmp/openshift</ocHome>
       <installClient>true</installClient>
       <ocUrl>https://github.com/openshift/origin/releases/download/v1.3.2/openshift-origin-client-tools-v1.3.2-ac1d579-linux-64bit.tar.gz</ocUrl>
@@ -75,7 +75,7 @@
       <address>172.17.0.1</address>
       <port>22</port>
       <username>admin</username>
-      <password>admins</password>
+      <password>admin</password>
     </overthere.SshHost>
     <template.overthere.SshHost id="Applications/OpenShift Project/1.0.0/openshift client apps" created-by="admin" created-at="2017-02-01T03:20:50.924+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:36:58.564+0000">
       <tags />
@@ -89,11 +89,11 @@
     </template.overthere.SshHost>
     <openshift.App id="Applications/OpenShift App/1.0.0/test app" created-by="admin" created-at="2017-02-01T03:16:32.377+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.377+0000">
       <tags />
-      <appName>test app</appName>
-      <dockerUrl>http://hub.docker.com</dockerUrl>
-      <dockerOrganization>xebialabs</dockerOrganization>
-      <dockerName>xebialabs</dockerName>
-      <dockerTag>1.2.3</dockerTag>
+      <appName>testapp</appName>
+      <dockerUrl></dockerUrl>
+      <dockerOrganization>openshift</dockerOrganization>
+      <dockerName>hello-openshift</dockerName>
+      <dockerTag>v1.4.1</dockerTag>
     </openshift.App>
     <openshift.BinaryApp id="Applications/OpenShift App/1.0.0/testBinaryApp" created-by="admin" created-at="2017-02-01T03:16:32.389+0000" last-modified-by="admin" last-modified-at="2017-02-01T03:16:32.389+0000" file="Applications/OpenShift App/1.0.0/testBinaryApp/CD Landscape.jpg">
       <tags />

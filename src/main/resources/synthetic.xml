@@ -67,6 +67,8 @@
           container-type="openshift.Project" description="OpenShift App">
         <generate-deployable type="openshift.App" extends="udm.BaseDeployable"/>
         <property name="appName" required="true"/>
+        <property name="blueGreen" kind="boolean" required="false" default="false" description="If selected, an update operation will be performed in a blue green deployment." />
+
         <property name="dockerUrl" required="false" label="Docker Url" category="Docker" description="Docker base url to be used."/>
         <property name="dockerOrganization" required="false" label="Docker Organization" category="Docker" description="Docker organization name."/>
         <property name="dockerName" required="false" label="Docker Image Name" category="Docker" description="Docker image name."/>
