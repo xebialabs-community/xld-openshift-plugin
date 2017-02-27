@@ -153,10 +153,10 @@ utility on a server.
       | dockerOrganization     | Docker organization name.                   |
       | dockerName             | Docker image name.                          |
       | dockerTag              | Docker image tag.                           |
-	  | pullDockerUrl          | Docker base url to do a 'docker pull' from. |
-	  | pullDockerOrganization | Docker organization name to pull.           |
-	  | pullDockerName         | Docker image name to pull.                  |
-	  | pullDockerTag          | Docker image tag to pull.                   |
+      | pullDockerUrl          | Docker base url to do a 'docker pull' from. |
+      | pullDockerOrganization | Docker organization name to pull.           |
+      | pullDockerName         | Docker image name to pull.                  |
+      | pullDockerTag          | Docker image tag to pull.                   |
 
     * **openshift.BinaryApp:**
       An OpenShift Binary App is an actual container file that should be deployed to a OpenShift project.  The Binary App module is defined as follows:

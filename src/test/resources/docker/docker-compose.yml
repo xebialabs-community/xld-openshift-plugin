@@ -22,6 +22,6 @@ xld:
   image: xebialabs/xld_dev_run:v6.1.0.1
   volumes:
     - ~/xl-licenses:/license
-    - ~/xl-data:/data
+    - ./../../../../:/data
   ports:
    - "14516:4516"
