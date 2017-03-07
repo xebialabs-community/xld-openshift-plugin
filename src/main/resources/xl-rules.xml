@@ -39,6 +39,7 @@
     <rule name="openshift.AppModule.CREATE" scope="deployed">
         <conditions>
             <type>openshift.AppModule</type>
+            <type>openshift.DockerPushAppModule</type>
             <operation>CREATE</operation>
         </conditions>
         <steps>
@@ -63,6 +64,7 @@
     <rule name="openshift.AppModule.DESTROY" scope="deployed">
         <conditions>
             <type>openshift.AppModule</type>
+            <type>openshift.DockerPushAppModule</type>
             <operation>DESTROY</operation>
         </conditions>
         <steps>
@@ -133,6 +135,35 @@
                 <freemarker-context>
                     <operation>modify</operation>
                 </freemarker-context>
+            </os-script>
+        </steps>
+    </rule>
+
+    <rule name="openshift.DockerPushAppModule.push-pull.CREATE" scope="deployed">
+        <conditions>
+            <type>openshift.DockerPushAppModule</type>
+            <operation>CREATE</operation>
+            <operation>MODIFY</operation>
+        </conditions>
+        <steps>
+            <os-script>
+                <script>openshift/docker-pull-tag-push</script>
+                <description expression="true">"Pulling [%s]:[%s] from the Registry and pushing to OpenShift" % (deployed.pullDockerName, deployed.pullDockerTag)</description>
+                <order>60</order>
+                <target-host expression="true">deployed.container.server.host</target-host>
+            </os-script>
+
+            <wait>
+                <order>65</order>
+                <description>Pause to let the change image trigger the deployment</description>
+                <seconds>10</seconds>
+            </wait>
+
+            <os-script>
+                <script>openshift/verify-deployment</script>
+                <description expression="true">"Verifying Rolling Deployment of [%s]" % (deployed.appName)</description>
+                <order>66</order>
+                <target-host expression="true">deployed.container.server.host</target-host>
             </os-script>
         </steps>
     </rule>
