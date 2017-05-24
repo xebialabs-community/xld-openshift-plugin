@@ -27,11 +27,7 @@ repositories {
   mavenLocal()
   mavenCentral()
   maven {
-    credentials {
-      username 'community-plugins'
-      password 'community'
-    }
-    url 'http://nexus.xebialabs.com/nexus/content/repositories/releases'
+    url 'http://dist.xebialabs.com/public/maven2'
   }
 }
 
