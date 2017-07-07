@@ -92,6 +92,7 @@
           container-type="openshift.Server" description="OpenShift Resource">
         <generate-deployable type="openshift.Resource" extends="udm.BaseDeployableArtifact"/>
         <property name="project"     required="true"  description="Project Name"/>
+        <property name="useOcApply" kind="boolean" required="false" default="false" description="Use oc apply when modifying this resource" />
     </type>
 
     <type-modification type="openshift.Resource">
