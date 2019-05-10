@@ -6,7 +6,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: VCLFgZ77ppDlMEM/Z6KiwG0MsW4SxVBlI3cgTn/L+1F6PWj9J40bT4Gp11ymydiO1P6GdPsBqUcBjo0KbeNmC6DdjEvAoJKrcBEH5w4OB0xk65ckBs4XOh6NLliMHHc9cLgo6nMNaFp04UGfngMxardani/CL4X+Llid04lQJls=
+    secure: gftVbJTmBOW/rItBubxBpdYuKB9vd/P1sNg/Y2hM1UIsA/HHFzPE2srrSqJD7P9Cug0DODpxf3cr1kfcGg3IZ9pYi1F0jA/2Fi2oQpctM7GKMx8IaEfYrimVstYu3THTwCJEm0uerewrdwc562zsg+XxFLKDmnCQFxdEsNK+H1w=
   file: build/distributions/xld-openshift-plugin-7.1.0.xldp
   skip_cleanup: true
   on:
